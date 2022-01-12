@@ -27,6 +27,13 @@ class Board extends React.Component {
   handleClick(i) {
     // Create a copy of state.squares
     const squares = this.state.squares.slice();
+
+    // Return if the square is already filled
+    if (squares[i]) {
+      return;
+    }
+
+    // Update the square's value on the copy
     squares[i] = this.state.xIsNext ? "X" : "O";
 
     this.setState({
