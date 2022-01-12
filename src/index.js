@@ -33,9 +33,10 @@ class Board extends React.Component {
       return;
     }
 
-    // Update the square's value on the copy
+    // Update the square's value
     squares[i] = this.state.xIsNext ? "X" : "O";
 
+    // Update the square's state
     this.setState({
       squares: squares,
       xIsNext: !this.state.xIsNext,
@@ -105,6 +106,16 @@ function calculateWinner(squares) {
 }
 
 class Game extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      history: [{
+        squares: Array(9).fill(null),
+      }],
+      xIsNext: true,
+    };
+  }
+
   render() {
     return (
       <div className="game">
